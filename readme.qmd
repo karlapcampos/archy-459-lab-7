@@ -1,0 +1,117 @@
+---
+title: "Marks of the Aurignacian: sign repertoires on mobile objects from Germany and France"
+date: today
+format: gfm
+fig-dpi: 600
+---
+
+```{r}
+library(tidyverse)
+signbase <- read_csv("signbase.csv", show_col_types = FALSE)
+theme_set(theme_minimal(base_size = 13) +
+            theme(plot.title = element_text(face = "bold"), legend.position = "top"))
+```
+
+## Introduction
+
+The Aurignacian, about 43,000–33,000 years ago, is the first Upper Palaeolithic technocomplex to spread across most of Europe. Its best-known objects come from Hohle Fels and Geissenklösterle, two caves in the Lone Valley of the Swabian Jura, where ivory figurines and flutes were found in well-dated layers (Higham et al., 2012). The Hohle Fels female figurine, carved from mammoth ivory, is at least 35,000 years old (Conard, 2009).
+
+Most Aurignacian marks, however, are not figurative. They are notches, lines, dots and crosses on tools, ornaments and stone blocks. Repeated sequences of such marks have been read as possible notational or information-storage devices (McPherron et al., 2022). If they were shared conventions, their repertoires might differ between regions, as personal ornaments do (Vanhaeren & d'Errico, 2006). Using SignBase (Dutkiewicz et al., 2020), I ask whether sign repertoires differ between Germany and France.
+
+## Methods
+
+SignBase v1.0 (Bentz et al., 2020) records `r nrow(signbase)` Aurignacian mobile objects from `r n_distinct(signbase$site_name)` sites in `r n_distinct(signbase$country)` countries, with `r ncol(select(signbase, line:other))` binary columns for the presence of each sign type. Germany (n = `r sum(signbase$country == "Germany")`) and France (n = `r sum(signbase$country == "France")`) provide most records, so I restricted the analysis to these two countries and removed duplicate records. I calculated the proportion of objects carrying each sign type in each country and counted the objects from each site.
+
+```{r}
+#| label: prepare-focus
+# Focus on the two best-documented countries and remove duplicate records
+signs_focus <- signbase |>
+  filter(country %in% c("Germany", "France"))  |>
+  distinct(site_name, object_type, .keep_all = TRUE)
+
+sign_freq <- signs_focus |>
+  pivot_longer(line:other, names_to = "sign", values_to = "present") |>
+  summarise(prop = mean(present, na.rm = TRUE),
+            n_present = sum(present, na.rm = TRUE), .by = c(country, sign))
+
+top10 <- sign_freq |>
+  summarise(n = sum(n_present), .by = sign) |>
+  slice_max(n, n = 10, with_ties = FALSE) |>
+  pull(sign)
+
+site_counts <- signs_focus |>
+  count(country, site_name) |>
+  mutate(share = n / sum(n), .by = country)
+
+top_site <- site_counts |>
+  slice_max(n, n = 1, by = country, with_ties = FALSE)
+top_de <- filter(top_site, country == "Germany")
+top_fr <- filter(top_site, country == "France")
+```
+
+## Results
+
+The analysed sample contains `r nrow(signs_focus)` objects (`r sum(signs_focus$country == "Germany")` German, `r sum(signs_focus$country == "France")` French). The most frequent sign type is *`r sign_freq |> filter(country == "Germany") |> slice_max(prop, n = 1, with_ties = FALSE) |> pull(sign)`* in Germany and *`r sign_freq |> filter(country == "France") |> slice_max(prop, n = 1, with_ties = FALSE) |> pull(sign)`* in France. The German objects come from `r sum(site_counts$country == "Germany")` sites and the French objects from `r sum(site_counts$country == "France")`. @fig-sites shows how the common sign types are spread across these sites.
+
+```{r}
+#| label: fig-sites
+#| fig-cap: "Number of objects at each site carrying each of the ten most common sign types. Sites are ordered by their total number of analysed objects; sites with none of these sign types are not shown."
+#| fig-height: 8
+site_signs <- signs_focus |>
+  pivot_longer(all_of(top10), names_to = "sign", values_to = "present") |>
+  summarise(n = sum(present, na.rm = TRUE), .by = c(country, site_name, sign)) |>
+  filter(n > 0) |>
+  left_join(select(site_counts, site_name, n_site = n), by = "site_name")
+
+site_signs |>
+  ggplot(aes(factor(sign, levels = top10), fct_reorder(site_name, n_site),
+             size = n)) +
+  geom_point() +
+  facet_grid(rows = vars(country), scales = "free_y", space = "free_y") +
+  scale_size_area(max_size = 8) +
+  labs(title = "Sign types by site", x = NULL, y = NULL, size = "Objects") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Discussion
+
+These patterns should be read cautiously. `r top_de$site_name` alone supplies `r scales::percent(top_de$share, 1)` of the German objects, and `r top_fr$site_name` supplies `r scales::percent(top_fr$share, 1)` of the French ones, so a national difference may reflect the excavation and preservation history of a few sites. Objects from the same layer are not independent, so sites rather than objects are the better unit of comparison.
+
+## Conclusion
+
+```{r}
+#| label: conclusion-values
+#| echo: false
+sign_pct <- function(ctry, s) {
+  round(100 * filter(sign_freq, country == ctry, sign == s)$prop)
+}
+notch_de  <- sign_pct("Germany", "notch")
+notch_fr  <- sign_pct("France", "notch")
+line_de   <- sign_pct("Germany", "line")
+line_fr   <- sign_pct("France", "line")
+obline_de <- sign_pct("Germany", "obline")
+obline_fr <- sign_pct("France", "obline")
+vulva_fr  <- sign_pct("France", "vulva")
+
+top3_de <- site_counts |>
+  filter(country == "Germany") |>
+  slice_max(n, n = 3, with_ties = FALSE)
+top3_de_sites <- knitr::combine_words(top3_de$site_name)
+top3_de_pct   <- round(100 * sum(top3_de$share))
+```
+
+In this sample, Germany and France share their common sign types and differ only in rare ones. Notches and lines are the two most frequent signs in both countries. Notches appear on `r notch_de`% of German objects and `r notch_fr`% of French objects, and lines on `r line_de`% and `r line_fr`%. The contrasts are in signs found on fewer than ten objects: oblique lines occur on `r obline_de`% of German objects but `r obline_fr`% of French ones, and vulva signs appear only in France, on `r vulva_fr`% of French objects. Three sites (`r top3_de_sites`) supply `r top3_de_pct`% of the German objects, so these few rare-sign contrasts do not yet show separate regional traditions. 
+
+## References
+
+Bentz, C., Dutkiewicz, E., Russo, G., & Lee, S. (2020). *SignBase main data file* [Data set]. figshare. https://doi.org/10.6084/m9.figshare.12000018.v1
+
+Conard, N. J. (2009). A female figurine from the basal Aurignacian of Hohle Fels Cave in southwestern Germany. *Science*, 459(7244), 248–252.
+
+Dutkiewicz, E., Russo, G., Lee, S., & Bentz, C. (2020). SignBase, a collection of geometric signs on mobile objects in the Paleolithic. *Scientific Data*, 7, 364. https://doi.org/10.1038/s41597-020-00704-x
+
+Higham, T., Basell, L., Jacobi, R., Wood, R., Bronk Ramsey, C., & Conard, N. J. (2012). Testing models for the beginnings of the Aurignacian and the advent of figurative art and music: The radiocarbon chronology of Geißenklösterle. *Journal of Human Evolution*, 62(6), 664–676.
+
+McPherron, S. P., Archer, W., Otárola-Castillo, E. R., Torquato, M. G., & Keevil, T. L. (2022). Machine learning, bootstrapping, null models, and why we are still not 100% sure which bone surface modifications were made by crocodiles. *Journal of Human Evolution*, 164, 103071.
+
+Vanhaeren, M., & d'Errico, F. (2006). Aurignacian ethno-linguistic geography of Europe revealed by personal ornaments. *Journal of Archaeological Science*, 33(8), 1105–1128.

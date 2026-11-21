@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "total": 6,
+    "pass": 4,
+    "warning": 1,
+    "error": 1
+  },
+  "results": [
+    {
+      "id": "ref-001",
+      "year": "2020",
+      "raw_text": "Bentz, C., Dutkiewicz, E., Russo, G., & Lee, S. (2020). SignBase main data \ufb01le [Data set]. \ufb01gshare. https://doi.org/10.6084/m9.\ufb01gshare.12000018.v1",
+      "status": "warning",
+      "reason": "Citation format cites dataset with Bentz as first author, but the associated paper (Dutkiewicz et al. 2020, Scientific Data) lists Dutkiewicz as first author. The figshare dataset DOI 10.6084/m9.figshare.12000018.v1 may correspond to a specific file in the collection (the collection DOI is 10.6084/m9.figshare.c.4898643).",
+      "quote": "https://figshare.com/articles/dataset/SignBase_main_data_file/12000018\n\nBentz, C., Dutkiewicz, E., Russo, G., & Lee, S. (2020). SignBase main data \ufb01le [Data set]. \ufb01gshare. https://doi.org/10.6084/m9.\ufb01gshare.12000018.v1",
+      "suggest": "Either cite the Scientific Data paper (Dutkiewicz et al. 2020) as the primary reference, or verify the exact figshare file DOI and ensure author order matches the dataset metadata.",
+      "page": 5
+    },
+    {
+      "id": "ref-002",
+      "year": "2009",
+      "raw_text": "Conard, N. J. (2009). A female \ufb01gurine from the basal Aurignacian of Hohle Fels Cave in south- western Germany. Science, 459(7244), 248\u2013252.",
+      "status": "error",
+      "reason": "The article was published in Nature, not Science. The correct citation is: Nature, 459(7244), 248-252. DOI: 10.1038/nature07995.",
+      "quote": "https://www.nature.com/articles/nature07995\n\nConard, N. J. (2009). A female \ufb01gurine from the basal Aurignacian of Hohle Fels Cave in south- western Germany. Science, 459(7244), 248\u2013252.",
+      "suggest": "Change 'Science' to 'Nature' in the journal name.",
+      "page": 5
+    },
+    {
+      "id": "ref-003",
+      "year": "2020",
+      "raw_text": "Dutkiewicz, E., Russo, G., Lee, S., & Bentz, C. (2020). SignBase, a collection of geometric signs on mobile objects in the Paleolithic. Scienti\ufb01c Data, 7, 364. https://doi.org/10.1038/s41597-020-00704- x",
+      "status": "pass",
+      "page": 5
+    },
+    {
+      "id": "ref-004",
+      "year": "2012",
+      "raw_text": "Higham, T., Basell, L., Jacobi, R., Wood, R., Bronk Ramsey, C., & Conard, N. J. (2012). Testing models for the beginnings of the Aurignacian and the advent of \ufb01gurative art and music: The radiocarbon chronology of Gei\u00dfenkl\u00f6sterle. Journal of Human Evolution, 62(6), 664\u2013676.",
+      "status": "pass",
+      "page": 5
+    },
+    {
+      "id": "ref-005",
+      "year": "2022",
+      "raw_text": "McPherron, S. P., Archer, W., Ot\u00e1rola-Castillo, E. R., Torquato, M. G., & Keevil, T. L. (2022). Ma- chine learning, bootstrapping, null models, and why we are still not 100% sure which bone surface modi\ufb01cations were made by crocodiles. Journal of Human Evolution, 164, 103071.",
+      "status": "pass",
+      "page": 5
+    },
+    {
+      "id": "ref-006",
+      "year": "2006",
+      "raw_text": "Vanhaeren, M., & d\u2019Errico, F. (2006). Aurignacian ethno-linguistic geography of Europe revealed by personal ornaments. Journal of Archaeological Science, 33(8), 1105\u20131128.",
+      "status": "pass",
+      "page": 5
+    }
+  ]
+}

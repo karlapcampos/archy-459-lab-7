@@ -1,0 +1,18 @@
+{
+  "schema": "code-review-manifest/v1",
+  "review_id": "cr-20261116-archy459",
+  "report": "output/code-review/code-review-report-2026-11-16.md",
+  "mode": "full",
+  "phase_tag": "standalone-code-review",
+  "ts": "2026-11-18T00:00:00Z",
+  "scripts": [
+    {
+      "path": "readme.qmd",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "out_of_scope": [],
+  "supersedes_review_id": null,
+  "fixed_finding_ids": [],
+  "remaining_blocking_count": 19
+}

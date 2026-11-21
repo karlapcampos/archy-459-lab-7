@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "total": 7,
+    "pass": 5,
+    "warning": 1,
+    "error": 1,
+    "unverifiable": 0
+  },
+  "results": [
+    {
+      "id": 1,
+      "source": "introduction",
+      "quote": "Aurignacian, about 43,000\u201333,000 years ago, is the first Upper Palaeolithic technocomplex",
+      "claim": "The Aurignacian dates to approximately 43,000\u201333,000 years ago and is the first Upper Palaeolithic technocomplex to spread across most of Europe",
+      "evidence_type": [
+        "related_work"
+      ],
+      "page": 1,
+      "status": "pass",
+      "reason": "Multiple sources confirm the Aurignacian is dated to ~43,000-33,000 years ago and is the first Upper Palaeolithic technocomplex associated with modern humans in Europe (Nature Communications 2024; Springer Encyclopedia 2020; French Ministry of Culture)."
+    },
+    {
+      "id": 2,
+      "source": "introduction",
+      "quote": "Hohle Fels female figurine, carved from mammoth ivory, is at least 35,000 years old",
+      "claim": "The Hohle Fels female figurine is at least 35,000 years old",
+      "evidence_type": [
+        "related_work"
+      ],
+      "page": 1,
+      "status": "pass",
+      "reason": "Conard (2009) in Nature 459, 248-252 reports the figurine was produced at least 35,000 calendar years ago. Verified via PubMed (PMID: 19444215) and Nature website."
+    },
+    {
+      "id": 3,
+      "source": "introduction",
+      "quote": "Most Aurignacian marks, however, are not figurative. They are notches, lines, dots and crosses",
+      "claim": "Most Aurignacian marks are non-figurative notches, lines, dots, and crosses on tools, ornaments, and stone blocks",
+      "evidence_type": [
+        "experiment",
+        "related_work"
+      ],
+      "page": 1,
+      "status": "pass",
+      "reason": "SignBase paper (Dutkiewicz et al. 2020, Scientific Data) identifies ~30 sign types including line, notch, dot, cross as the most frequent. Notch (254), line (174), cross (38), dot (15) are the top types per presentation materials."
+    },
+    {
+      "id": 4,
+      "source": "introduction",
+      "quote": "Repeated sequences of such marks have been read as possible notational or information-storage devices",
+      "claim": "Repeated sequences of Aurignacian marks have been interpreted as possible notational or information-storage devices",
+      "evidence_type": [
+        "related_work"
+      ],
+      "page": 1,
+      "status": "error",
+      "reason": "The paper cites McPherron et al. (2022) for this claim, but McPherron et al. (2022) is about 'Machine learning, bootstrapping, null models, and why we are still not 100% sure which bone surface modifications were made by crocodiles' (J. Hum. Evol. 164:103071) - a paper on crocodile bite marks, not notational systems. The notational interpretation originates with Marshack (1964, 1972) and is discussed in Bentz & Dutkiewicz (2026, PNAS) and Bacon et al. (2023, Cambridge Archaeol. J.).",
+      "suggest": "Replace citation with Marshack (1964/1972) or Bentz & Dutkiewicz (2026) or Bacon et al. (2023) for notational system claims."
+    },
+    {
+      "id": 5,
+      "source": "introduction",
+      "quote": "If they were shared conventions, their repertoires might differ between regions, as personal ornaments do",
+      "claim": "If Aurignacian marks were shared conventions, their sign repertoires might differ between regions, similar to personal ornaments",
+      "evidence_type": [
+        "related_work"
+      ],
+      "page": 1,
+      "status": "pass",
+      "reason": "Vanhaeren & d'Errico (2006, J. Archaeol. Sci. 33:1105-1128) analyzed 157 bead types at 98 Aurignacian sites and found geographically cohesive sets with distinct ornament repertoires, interpreted as reflecting ethno-linguistic diversity. This supports the analogy."
+    },
+    {
+      "id": 7,
+      "source": "method",
+      "quote": "SignBase v1.0 (Bentz et al., 2020) records 531 Aurignacian mobile objects from 65 sites in 13 countries",
+      "claim": "SignBase v1.0 contains 531 Aurignacian mobile objects from 65 sites across 13 countries",
+      "evidence_type": [
+        "related_work",
+        "code"
+      ],
+      "page": 2,
+      "status": "warning",
+      "reason": "SignBase paper (Dutkiewicz et al. 2020) confirms 531 objects from 65 sites. However, the paper lists sites in ~9-10 countries (France, Germany, Belgium, Czech Republic, Spain, Italy/Sicily, Israel, Iraq, Russia/Ukraine by Black Sea), not 13. The '13 countries' figure may include additional countries not explicitly listed in the paper abstract.",
+      "suggest": "Verify the exact country count from the full dataset or clarify which 13 countries are included."
+    },
+    {
+      "id": 29,
+      "source": "abstract vs experiments",
+      "quote": "SignBase v1.0 (Bentz et al., 2020) records 531 Aurignacian mobile objects",
+      "claim": "The Methods section claim of 531 total objects in SignBase is consistent with the data source description",
+      "evidence_type": [
+        "experiment",
+        "related_work"
+      ],
+      "page": 2,
+      "status": "pass",
+      "reason": "The Methods section claim of 531 objects matches the SignBase paper (Dutkiewicz et al. 2020) which states '531 mobile objects carrying geometric signs from 65 Aurignacian sites'."
+    }
+  ]
+}

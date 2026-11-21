@@ -1,0 +1,37 @@
+{
+  "pdf": "/home/fourthelement/Archy 459/archy-459-lab-7/paperdoctor/readme/readme.pdf",
+  "dpi": 150,
+  "renderer": "fitz",
+  "pages": [
+    {
+      "page": 1,
+      "image_path": "/home/fourthelement/Archy 459/archy-459-lab-7/paperdoctor/readme/display/pages/page-001.png",
+      "width": 1276,
+      "height": 1651
+    },
+    {
+      "page": 2,
+      "image_path": "/home/fourthelement/Archy 459/archy-459-lab-7/paperdoctor/readme/display/pages/page-002.png",
+      "width": 1276,
+      "height": 1651
+    },
+    {
+      "page": 3,
+      "image_path": "/home/fourthelement/Archy 459/archy-459-lab-7/paperdoctor/readme/display/pages/page-003.png",
+      "width": 1276,
+      "height": 1651
+    },
+    {
+      "page": 4,
+      "image_path": "/home/fourthelement/Archy 459/archy-459-lab-7/paperdoctor/readme/display/pages/page-004.png",
+      "width": 1276,
+      "height": 1651
+    },
+    {
+      "page": 5,
+      "image_path": "/home/fourthelement/Archy 459/archy-459-lab-7/paperdoctor/readme/display/pages/page-005.png",
+      "width": 1276,
+      "height": 1651
+    }
+  ]
+}

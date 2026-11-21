@@ -1,0 +1,16 @@
+{
+  "summary": {
+    "total_issues": 1,
+    "warning_issues": 1,
+    "error_issues": 0
+  },
+  "results": [
+    {
+      "page": 1,
+      "quote": "Geissenkl\u00f6sterle, two caves in the Lone Valley",
+      "status": "warning",
+      "reason": "Inconsistent spelling: 'Geissenkl\u00f6sterle' (with ss) in Introduction vs 'Gei\u00dfenkl\u00f6sterle' (with \u00df) in References. The correct German spelling uses \u00df.",
+      "suggest": "Standardize to 'Gei\u00dfenkl\u00f6sterle' throughout."
+    }
+  ]
+}
